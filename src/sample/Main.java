@@ -86,21 +86,23 @@ public class Main extends Application {
     @Override
     public void start(Stage mainStage) {
 
-        Model model = new Model();
-        controller = new Controller(model);
+//        Model model = new Model();
+        controller = new Controller();
         GUI gui = new GUI(mainStage, controller);
 
         controller.setGUI(gui);
 
+        // TODO: no default text loaded!
         File f = new File("/Users/tylerweston/Desktop/sample.pdf");
         document doc = new document();
         doc.loadDocument(f);
-        System.out.println("Document loaded succesfully");
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Getting chunk of size 5:");
-            String s = doc.getChunk(5);
-            System.out.println(s);
-        }
+        controller.setDoc(doc);
+//        System.out.println("Document loaded succesfully");
+//        for (int i = 0; i < 5; i++) {
+//            System.out.println("Getting chunk of size 5:");
+//            String s = doc.getChunk(5);
+//            System.out.println(s);
+//        }
 
     }
 
