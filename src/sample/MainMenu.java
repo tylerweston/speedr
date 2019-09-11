@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -12,14 +10,6 @@ import javafx.scene.input.KeyCombination;
 
 class MainMenu extends MenuBar {
 
-    private final BooleanProperty setDisabled = new SimpleBooleanProperty(true);
-
-    /**
-     * Creates a new main Menu for the program.
-     *
-     * @param controller    a controller object to manage
-     *                      executive functions
-     */
     MainMenu(Controller controller) {
 
         // file menu
@@ -49,39 +39,15 @@ class MainMenu extends MenuBar {
         MenuItem optionsPreferences = new MenuItem("_Preferences");
         optionsPreferences.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.SHORTCUT_DOWN));
         optionsPreferences.setOnAction((ae) -> controller.showPreferences());
-//        optionsPreferences.disableProperty().bind(setDisabled);
-//
-//
-//        MenuItem toolsRenamingLog = new MenuItem("_Renaming Log");
-//        toolsRenamingLog.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
-////        toolsRenamingLog.setOnAction((ae) -> controller.openLog());
-//
-//        MenuItem toolsTagFolder = new MenuItem("Tag _Folder");
-//        toolsTagFolder.setAccelerator(new KeyCodeCombination(KeyCode.F, KeyCombination.SHORTCUT_DOWN));
-////        toolsTagFolder.setOnAction((ae) -> controller.TagFolder());
-
-
 
         optionsMenu.getItems().add(optionsPreferences);
-//        optionsMenu.getItems().add(new SeparatorMenuItem());
-//        optionsMenu.getItems().add(toolsRenamingLog);
-//        optionsMenu.getItems().add(toolsTagFolder);
-
 
         // about menu
 
         final Menu aboutMenu = new Menu("About");
-//        MenuItem aboutItem = new MenuItem("About");
         aboutMenu.setOnAction((ae) -> controller.showAbout());
-//        aboutMenu.getItems().add(aboutItem);
 
         this.getMenus().addAll(fileMenu, optionsMenu, aboutMenu);
     }
 
-    /**
-     * Enable menu options that should only be available when a photo is loaded
-     */
-    void enableView() {
-        setDisabled.setValue(false);
-    }
 }

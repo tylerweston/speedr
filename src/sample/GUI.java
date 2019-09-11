@@ -1,24 +1,8 @@
 package sample;
 
-//import controller.Controller;
-//import controller.IController;
-//import tags.Tag;
-//import photo.Photo;
-
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,10 +10,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-
-import static javafx.collections.FXCollections.*;
 
 public class GUI {
 
@@ -42,18 +22,7 @@ public class GUI {
     Button playPauseButton;
     TextField wordSpeedText;
     TextField chunkSizeText;
-//        root.getChildren().add(t);
-//        t.setTextAlignment(TextAlignment.CENTER);
-//        t.setFont(Font.font("Verdana", 20));
 
-
-    /**
-     * Creates a graphical user interface (GUI) for the program.
-     *
-     * @param mainStage    main stage to host the program
-     * @param setController    a controller object to manage
-     *                         executive functions
-     */
     public GUI(Stage mainStage, Controller setController) {
 
         mainStage.setTitle("speedr");
@@ -148,10 +117,6 @@ public class GUI {
 
     }
 
-
-    /**
-     * Returns the main stage that hosts the program.
-     */
     public Stage getStage() {
         return stage;
     }

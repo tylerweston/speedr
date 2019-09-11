@@ -1,13 +1,9 @@
 package sample;
 
 import javafx.scene.control.Alert;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -34,6 +30,7 @@ public class Controller {
     public Controller() {
         // create new Controller, do any init. here
 
+        // TODO: FIX
         timer = new Timer();
 //        final long start = System.currentTimeMillis();
         task = new TimerTask() {

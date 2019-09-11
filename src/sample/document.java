@@ -1,15 +1,14 @@
 package sample;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.text.PDFTextStripperByArea;
 
 /*
 TODO:
@@ -25,7 +24,6 @@ public class document {
     public void loadDocument(File documentPath) {
         // given a path (string?) load a document
         // TODO: determine extension and decide how to handle the document
-//        String fname = documentPath.toString();
         String ext2 = fileExtension(documentPath);
 
         switch (ext2) {
@@ -42,25 +40,6 @@ public class document {
                 // handle can't load here?
                 break;
         }
-//        try {
-//            PDDocument document = PDDocument.load(documentPath);
-//
-//            StringBuilder doctext = new StringBuilder();
-//            if (!document.isEncrypted()) {
-//                PDFTextStripper stripper = new PDFTextStripper();
-//                doctext.append(stripper.getText(document));
-//            }
-//
-//            document.close();
-//            words = doctext.toString().replaceAll("\n","").split(" ");
-//            docLoaded = true;
-//
-//
-//        } catch (IOException e) {
-//            //TODO: handle file not found
-//            System.out.println("File not found!");
-//        }
-
     }
 
     public String getChunk(int chunkSize) {
