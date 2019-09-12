@@ -21,28 +21,35 @@ public class Controller {
     int chunkSize = 4;
     int wordSpeed = 200;
 
+    int currentTick = 0;
+    int msWordSpeed;
+
     Timer timer;
     TimerTask task;
 
     boolean playing = false;
-    boolean hasTask = false;
+//    boolean hasTask = false;
 
     public Controller() {
         // create new Controller, do any init. here
 
-        // TODO: FIX
+        // init msWordSpeed, this will be the default setting
+        msWordSpeed = bpmToMsec(wordSpeed);
         timer = new Timer();
-//        final long start = System.currentTimeMillis();
         task = new TimerTask() {
             @Override
             public void run() {
                 if (playing && doc.isDocLoaded()) {
-                    doNextChunk();
+                    currentTick++;
+                    if (currentTick >= msWordSpeed) {
+                        currentTick = 0;
+                        doNextChunk();
+                    }
                 }
             }
         };
-        // TODO: this only works first time
-        changeSpeed(200);
+
+        timer.scheduleAtFixedRate(task, 0, 1);
 
     }
 
@@ -57,16 +64,8 @@ public class Controller {
     }
 
     public void changeSpeed(int speed) {
-        // TODO:
-        //  - This doesn't work, we can't change the speed of timers like this
-        //  figure out a better way to do it!
-        //  - Maybe count every msec and once a goal is hit, switch to the next chunk?
-        //  maybe inefficient?
         wordSpeed = speed;
-        int msWordSpeed = bpmToMsec(wordSpeed);
-        timer.scheduleAtFixedRate(task, 0, msWordSpeed);
-//        timer.schedule(task, msWordSpeed);
-        hasTask = true;
+        msWordSpeed = bpmToMsec(wordSpeed);
     }
 
     public void changeChunk(int chunk) {
